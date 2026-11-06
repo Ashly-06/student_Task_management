@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Register - Student Task Manager{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h3 class="mb-1">Create account</h3>
+        <p class="text-muted">Register to start tracking your tasks.</p>
+        <form method="POST" action="{{ url_for('register') }}" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ name or '' }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ email or '' }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="form-text">At least 6 characters, with a letter and a number.</div>
+          </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+        <p class="text-center mt-3 mb-0">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
