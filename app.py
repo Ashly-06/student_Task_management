@@ -1,4 +1,4 @@
-"""Student Task Management System - Flask + SQLite + Bootstrap."""
+
 import os
 import re
 import sqlite3
@@ -19,13 +19,12 @@ EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 VALID_STATUS = ("Pending", "Completed")
 
 
-# ---------------------------------------------------------------- database
 def get_db():
     """One SQLite connection per request (stored on Flask's `g`)."""
     if "db" not in g:
         g.db = sqlite3.connect(app.config["DATABASE"])
-        g.db.row_factory = sqlite3.Row          # access columns by name
-        g.db.execute("PRAGMA foreign_keys = ON")  # enforce the foreign key
+        g.db.row_factory = sqlite3.Row         
+        g.db.execute("PRAGMA foreign_keys = ON")  
     return g.db
 
 
@@ -62,7 +61,7 @@ def init_db():
     db.close()
 
 
-# ----------------------------------------------------------------- helpers
+
 def login_required(view):
     """Redirect to login if the user is not in the session."""
     @wraps(view)
@@ -111,7 +110,6 @@ def validate_task_form(form):
     return data, errors
 
 
-# ------------------------------------------------------------ auth routes
 @app.route("/")
 def index():
     if "user_id" in session:
@@ -194,7 +192,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-# ------------------------------------------------------------ task routes
 @app.route("/dashboard")
 @login_required
 def dashboard():
@@ -309,8 +306,6 @@ def update_status(task_id):
     flash(f"Task marked as {new_status}.", "success")
     return redirect(request.referrer or url_for("dashboard"))
 
-
-# --------------------------------------------------------- error handlers
 @app.errorhandler(404)
 def not_found(e):
     return render_template("404.html"), 404
