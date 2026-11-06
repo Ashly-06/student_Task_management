@@ -50,7 +50,7 @@ student-task-management/
 - `users(id, name, email UNIQUE, password)`
 - `tasks(id, user_id -> users.id, task_title, description, status, due_date, created_at)`
 
-## Security notes (for viva)
+## Security notes 
 - Passwords are never stored in plain text (hashed + salted).
 - All SQL uses `?` placeholders, which prevents SQL injection.
 - Protected routes use a `@login_required` decorator that checks `session`.
