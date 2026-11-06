@@ -1,4 +1,4 @@
-"""Automated smoke tests. Run with:  python test_app.py"""
+
 import os, tempfile, unittest
 import app as app_module
 
