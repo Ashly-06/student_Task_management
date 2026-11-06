@@ -1,0 +1,7 @@
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+.stat-card { border-width: 0 0 4px 0; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.stat-number { font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
+.desc-cell { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card { border: 0; border-radius: .75rem; }
+.table th { font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; }
